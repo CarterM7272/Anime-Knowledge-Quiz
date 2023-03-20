@@ -17,7 +17,7 @@ header {
   margin-right: 50px;
 }
 
-#highScoreEl, #timerEl {
+#highScoreEl, #timerEl, #score {
   color: black;
   margin-top: 15px;
 }
@@ -63,8 +63,4 @@ main {
   backdrop-filter: blur(0.8px);
   -webkit-backdrop-filter: blur(0.8px);
   border: 1px solid rgba(255, 255, 255, 1);
-}
-
-.answerDiv {
-  display: none;
 }

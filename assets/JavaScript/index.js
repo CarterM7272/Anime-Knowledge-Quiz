@@ -19,14 +19,15 @@
 const mainEl = document.querySelector("main");
 var startBtn = document.querySelector("#start-btn");
 var timerEl = document.querySelector("#timerEl");
-var answerDiv = document.querySelectorAll (".answerDiv")
+var scoreEl = document.querySelector("#score")
+var scoreTotal = 1
 
 var time = 101;
 var interval;
 var questionIndex = 0;
 var lastQuestionCorrect = "";
+scoreEl.textContent = "score: 0"
 
-lastQuestionCorrect.style = "display: flex; justify-content: end; align-items: end;"
 
 var questionsList = [
   {question: "What is Goku's iconic blast?",
@@ -42,6 +43,21 @@ var questionsList = [
   question: "Who is the most hated character in Naruto?",
   answers: ["Madara", "Choji", "Naruto", "Sakura"],
   correct: 3
+},
+{
+  question: "Which part of the body did Lelouch's geass take place?",
+  answers: ["hand", "left finger", "eye", "elbow"],
+  correct: 2
+},
+{
+  question: "What race is Meliodas from?",
+  answers: ["Wolves", "Cats", "Gods", "Demons"],
+  correct: 3
+},
+{
+  question: "Which breathing technique does Tanjiro use at the beginning of Demon Slayer?",
+  answers: ["Deep", "Rapid", "Water", "asthma"],
+  correct: 2
 }
 ]
 
@@ -75,6 +91,8 @@ function displayQuestion() {
 
     if (clickedQuestionIndex === questionsList[questionIndex].correct) {
       alert("You chose the right answer.");
+      scoreEl.textContent = "score: " + scoreTotal++
+      console.log(scoreEl)
     } else {
       time = time - 10
       alert("You chose the wrong answer. -10 seconds!");
@@ -107,8 +125,6 @@ startBtn.addEventListener("click", function(event) {
     time--;
     timerEl.textContent = `Time: ${time}`
 
-    // Also call endgame() if all questions are answered or timer ends using || comparators
-
     if (time <= 0) {
       clearInterval(interval);
       endgame();
@@ -126,9 +142,6 @@ startBtn.addEventListener("click", function(event) {
 
 
 
-
-
 function endgame()  {
-  clearInterval(interval);
   
 }
