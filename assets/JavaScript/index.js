@@ -143,5 +143,14 @@ startBtn.addEventListener("click", function(event) {
 
 
 function endgame()  {
-  
+  function storeUser() {
+    localStorage.setItem("username", name);
+    document.getElementById("storedName").innerHTML = localStorage.getItem("username");
+    var name = document.getElementById("myInput").value;
+  }
+
+  function storeScore() {
+    localStorage.setItem("score", scoreInput);
+  }
+
 }
