@@ -1,26 +1,10 @@
-//To-do's:
-
-// list variables
-// Click button to start quiz
-// add timer high-score to page after click button
-// timer counts down
-// display questions and answers
-// iterate through an array of questions using a for loop
-// set answers relative to index number of array
-// add event listener when answer is clicked
-// create if statement to compare user answer to correct answer 
-// if user clicked on correct answer continue to next question
-// save user data in local storage
-// get local storage
-// display user highschool on "high-score.html"
-// reduce timer count *if answered incorrectly
-// game over if all questions are answered and timer reaches 0 
 
 const mainEl = document.querySelector("main");
 var startBtn = document.querySelector("#start-btn");
 var timerEl = document.querySelector("#timerEl");
 var scoreEl = document.querySelector("#score")
 var scoreTotal = 1
+var userInformationSubmit = document.querySelector('#user-information')
 
 var time = 101;
 var interval;
@@ -30,7 +14,8 @@ scoreEl.textContent = "score: 0"
 
 
 var questionsList = [
-  {question: "What is Goku's iconic blast?",
+  {
+  question: "What is Goku's iconic blast?",
   answers: ["yee-ha", "hema-hema-hey", "kamehameha", "final flash" ],
   correct: 2
 },
@@ -137,20 +122,26 @@ startBtn.addEventListener("click", function(event) {
 
 });
 
+function storeUser() {
+  var name = document.getElementById("myInput").value;
+  localStorage.setItem("username", name);
+  document.getElementById("name-output").innerHTML = localStorage.getItem("username");
+  localStorage.setItem("playerInitials", JSON.stringify(scoreList));
 
+}
 
+function storeScore() {
+  localStorage.setItem("score", scoreInput);
+
+}
+
+var scoresList = [];
 
 
 
 function endgame()  {
-  function storeUser() {
-    localStorage.setItem("username", name);
-    document.getElementById("storedName").innerHTML = localStorage.getItem("username");
-    var name = document.getElementById("myInput").value;
-  }
+  clearInterval(interval);
 
-  function storeScore() {
-    localStorage.setItem("score", scoreInput);
-  }
-
+  storeUser();
+  storeScore();
 }
